@@ -1,43 +1,27 @@
-from setuptools import find_packages, setup
-from typing import List
+import setuptools
 
-with open("README.md", encoding="utf-8") as f:
+with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
+__version__ = "0.0.3"
 
-__version__ = "0.0.0"
 REPO_NAME = "YTWEBrenderer"
-AUTHOR_NAME = "VinodKumarJodu"
+AUTHOR_USER_NAME = "VinodKumarJodu"
 SRC_REPO = "YTWEBrenderer"
+AUTHOR_EMAIL = "vinodkumarjodu@gmail.com"
 
-REQUIREMENTS_FILE_NAME = "requirements_dev.txt"
-HYPHEN_E_DOT = "-e ."
-
-def get_requirements() -> List[str]:
-    """
-    This Function will return the list of requirements listed in requirements.txt
-    """
-    requirements_list: List[str]= []
-    with open(REQUIREMENTS_FILE_NAME,'r') as f:
-        # contents = csv.reader(f)
-        # requirements_list = [line[0] for line in contents]
-        if HYPHEN_E_DOT in requirements_list:
-            requirements_list.remove(HYPHEN_E_DOT)
-        print(requirements_list)
-    return requirements_list
-
-setup(
+setuptools.setup(
     name=SRC_REPO,
     version=__version__,
-    author=AUTHOR_NAME,
-    author_email="vinodkumarjodu@gmail.com",
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    description="A small python package",
     long_description=long_description,
-    long_description_content="text/makdown",
-    url=f"https://github.com/{AUTHOR_NAME}/{REPO_NAME}",
+    long_description_content="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
     project_urls={
-        "Bug Tracker": f"https://github.com/{AUTHOR_NAME}/{REPO_NAME}/issues",
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
     },
     package_dir={"": "src"},
-    packages=find_packages(),
-    install_requires = get_requirements()
+    packages=setuptools.find_packages(where="src")
 )
